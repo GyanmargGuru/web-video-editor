@@ -1,0 +1,557 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('Roboto-Regular.ttf') format('truetype');
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Header & Actions */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #fff;
+}
+
+h2 {
+    margin: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #fff;
+}
+
+.help-button {
+    position: absolute;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 0.75em;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.help-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.help-button:active {
+    transform: scale(0.95);
+}
+
+.actions-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.action-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+    font-size: 14px;
+    /* Standardize font size */
+    min-width: 100px;
+    /* Ensure minimum width for consistency */
+    text-align: center;
+}
+
+.action-button.add-media {
+    background-color: #678dac;
+    color: white;
+}
+
+.action-button.add-media:hover {
+    background-color: #1976D2;
+}
+
+.action-button.export {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.action-button.export:hover {
+    background-color: #388E3C;
+}
+
+.action-button.save {
+    background-color: #696969;
+    color: white;
+}
+
+.action-button.load {
+    background-color: #777;
+    color: white;
+    display: inline-block;
+}
+
+.action-button.new-project {
+    background-color: #b86b6b;
+    /* Red color for caution */
+    color: white;
+}
+
+.action-button.export {
+    background-color: #4CAF50;
+    /* Green for success/action */
+    color: white;
+}
+
+.file-input {
+    display: none;
+}
+
+/* Main Layout */
+.main-workspace {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    min-height: 0;
+    /* Important for flex scrolling */
+}
+
+/* Media Library */
+.media-library {
+    width: 250px;
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.media-library h3 {
+    margin-top: 0;
+}
+
+.media-item {
+    background-color: #3d3d3d;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Preview Area */
+.preview-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    min-height: 0;
+    min-height: 0;
+    /* Crucial for nested flex scrolling */
+}
+
+.preview-stage {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    min-height: 0;
+    background-color: #000;
+}
+
+.video-wrapper {
+    position: relative;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 854px;
+    /* Preferred width */
+    max-width: 100%;
+    /* Responsive constraint */
+    height: auto;
+    /* Auto height to maintain aspect ratio */
+    aspect-ratio: 16 / 9;
+    /* Enforce aspect ratio */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+}
+
+#preview-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: none;
+    position: relative;
+    z-index: 1;
+}
+
+#preview-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.playback-controls {
+    height: 50px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+.control-icon {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.control-icon:hover {
+    color: #2196F3;
+}
+
+.time-display {
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+/* Timeline Area */
+.timeline-area {
+    height: 300px;
+    background-color: #252526;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.timeline-controls {
+    height: 30px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.timeline-controls button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 4px;
+    background: #555;
+    color: white;
+    cursor: pointer;
+}
+
+.timeline-main {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.timeline-headers {
+    width: 100px;
+    background-color: #333;
+    border-right: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    /* Match ruler height */
+    z-index: 20;
+    flex-shrink: 0;
+}
+
+.timeline-scroll-container {
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: auto;
+    position: relative;
+}
+
+.timeline-ruler {
+    height: 20px;
+    background-color: #2d2d2d;
+    border-bottom: 1px solid #444;
+    position: relative;
+    cursor: pointer;
+}
+
+.timeline-tracks {
+    position: relative;
+    min-height: 100%;
+}
+
+.track {
+    height: 60px;
+    border-bottom: 1px solid #333;
+    position: relative;
+    background-color: #2a2a2a;
+}
+
+.track-label {
+    height: 60px;
+    width: 100%;
+    color: #aaa;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #444;
+    background-color: #333;
+}
+
+.clip {
+    position: absolute;
+    top: 5px;
+    height: 50px;
+    border-radius: 4px;
+    padding: 0 5px;
+    font-size: 12px;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    /* Stronger border and box-sizing */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.video-clip {
+    background-color: #3F51B5;
+}
+
+.audio-clip {
+    background-color: #009688;
+}
+
+.text-clip {
+    background-color: #E91E63;
+}
+
+.image-clip {
+    background-color: #FF9800;
+}
+
+.playhead {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: red;
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* Popups */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    /* Responsive width */
+    max-width: 400px;
+    /* Max width */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-sizing: border-box;
+    /* Ensure padding doesn't add to width */
+}
+
+.popup-content textarea {
+    width: 100%;
+    height: 80px;
+    background: #222;
+    color: white;
+    border: 1px solid #444;
+    padding: 8px;
+    box-sizing: border-box;
+    /* Fix overflow */
+    resize: vertical;
+}
+
+.popup-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.control-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.control-group input {
+    background: #222;
+    border: 1px solid #444;
+    color: white;
+    padding: 5px;
+    width: 100%;
+    /* Full width */
+    box-sizing: border-box;
+    /* Fix overflow */
+}
+
+.align-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.align-btn {
+    flex: 1;
+    padding: 5px;
+    background: #444;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.align-btn.active {
+    background: #2196F3;
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.popup-actions button {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+/* Loading Indicator */
+#loading-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    z-index: 2000;
+}
+
+/* New Styles */
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+#zoom-fit-btn {
+    width: auto;
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+/* Alternating clip colors */
+.clip:nth-child(odd) {
+    filter: brightness(1.1);
+}
+
+.clip:nth-child(even) {
+    filter: brightness(0.95);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .app-container {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    .actions-container {
+        flex-wrap: wrap;
+    }
+
+    .action-button {
+        flex: 1 1 40%;
+        /* Grow to fill space */
+    }
+
+    .timeline-area {
+        height: 250px;
+        /* Smaller timeline on mobile */
+    }
+
+    .popup-controls {
+        flex-direction: column;
+        /* Stack controls vertically on small screens */
+    }
+}

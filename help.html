@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Simple Web Video Editor</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: linear-gradient(0deg, #252730 0%, #2f2d30 100%);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 0;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #ffd700;
+            font-size: 1.8em;
+            margin-top: 30px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.5);
+            padding-bottom: 10px;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.185);
+            border-left: 4px solid #ffd700;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .feature h3 {
+            margin-top: 0;
+            color: #ffd700;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .tip {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .contribute {
+            background: linear-gradient(0deg, #a787aa 0%, #61494c 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contribute a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .contribute a:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        .credits {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li:before {
+            content: "▸ ";
+            color: #ffd700;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎬 Simple Video Editor</h1>
+        <p style="text-align: center; font-size: 1.2em;">Create awesome videos right in your browser!</p>
+
+        <h2><span class="emoji">✨</span>Main Features</h2>
+
+        <div class="feature">
+            <h3>🎥 Multi-Track Timeline</h3>
+            <p>Arrange videos, images, audio, and text on separate tracks. Double click to change the settings. Drag and
+                drop to reposition clips!</p>
+        </div>
+
+        <div class="feature">
+            <h3>📝 Stylish Text Overlays</h3>
+            <p>Add text with custom positioning, alignment, and font size. Supports multi-line text (just press Enter)!
+            </p>
+        </div>
+
+        <div class="feature">
+            <h3>🖼️ Image Overlays</h3>
+            <p>Drop images onto your video with precise control over size and position.</p>
+        </div>
+
+        <div class="feature">
+            <h3>💾 Save & Load Projects</h3>
+            <p>Never lose your work! Save projects as JSON files and continue editing later. Use the "Re-link" feature
+                to restore media files.</p>
+        </div>
+
+        <div class="feature">
+            <h3>📤 Export to MP4</h3>
+            <p>Render your masterpiece as a high-quality 1280x720 MP4 video file ready to share!</p>
+        </div>
+
+        <div class="feature">
+            <h3> 📲 Works Offline</h3>
+            <p>Works offline, no need to worry about internet connection! Your files are not uploaded to the server. It
+                works locally.</p>
+        </div>
+
+        <h2><span class="emoji">🚀</span>Quick Start Guide</h2>
+
+        <div class="tip">
+            <strong>1. Add Media:</strong> Click the "Add Video", "Add Image", or "Add Audio" buttons to import your
+            files.
+        </div>
+
+        <div class="tip">
+            <strong>2. Add Text:</strong> Click "Add Text" and type your message. Use the alignment buttons to position
+            it.
+        </div>
+
+        <div class="tip">
+            <strong>3. Edit Clips:</strong> Double-click any clip on the timeline to adjust its timing, position, or
+            properties.
+        </div>
+
+        <div class="tip">
+            <strong>4. Preview:</strong> Hit the Play button to see your creation in action!
+        </div>
+
+        <div class="tip">
+            <strong>5. Save:</strong> Click "Save Project" to save your project as a JSON file. The file are saved in
+            your default <b>Downloads</b> folder.
+        </div>
+
+        <div class="tip">
+            <strong>6. Export:</strong> Click "Export Video" when you're ready. The magic happens in your browser! Video
+            file are saved in your default <b>Downloads</b> folder.
+        </div>
+
+        <h2><span class="emoji">💡</span>Pro Tips</h2>
+        <ul>
+            <li>Drag clips on the timeline to change their start time</li>
+            <li>Click and drag the red cursor to see different parts of the video.</li>
+            <li>Double click the clips or elements to change their settings.</li>
+            <li>Use the zoom controls to get a better view of your timeline</li>
+            <li>Click "Zoom to Fit" to see your entire project at once</li>
+            <li>Save frequently to avoid losing your work!</li>
+            <li>The timeline auto-adjusts to fit all your content</li>
+        </ul>
+
+        <div class="contribute">
+            <h2 style="margin-top: 0;">🤝 Contribute</h2>
+            <p>This is a <strong>free and open source</strong> project!</p>
+            <p>We welcome contributions, bug reports, and feature requests.</p>
+            <a href="https://github.com/GyanmargGuru/web-video-editor" target="_blank">
+                Visit us on GitHub →
+            </a>
+            <div class="credits">
+                <p><strong>Contributors:</strong></p>
+                <p>Gyanmarg Guru - Core Development & Features</p>
+                <p>Antigravity (Google DeepMind) - Core Development & Features</p>
+                <p>...and awesome people like you! ❤️</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
