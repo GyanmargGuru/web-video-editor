@@ -844,7 +844,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updatePlayhead();
                 renderFrame();
 
-                alert("Project loaded successfully! Note: Media files (Video, Audio, Images) cannot be saved in the project file. You may need to re-add them or we can implement a re-link feature in the future.");
+                alert("Project loaded successfully! Note: Media files (Video, Audio, Images) cannot be saved in the project file. You may need to re-add them.");
 
             } catch (err) {
                 console.error(err);

@@ -1,21 +1,25 @@
 <?php
-  // Send the required headers for SharedArrayBuffer
-  header("Cross-Origin-Opener-Policy: same-origin");
-  header("Cross-Origin-Embedder-Policy: require-corp");
+    // Send the required headers for SharedArrayBuffer
+    header("Cross-Origin-Opener-Policy: same-origin");
+    header("Cross-Origin-Embedder-Policy: require-corp");
+  	// include "../com/utils.php";
+	$l_sitever = "0.2.0";
+	$count_serv = "ve";
+	include "../com/count.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browser-Based Video Editor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Simple Video Editor</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="app-container">
         <!-- ... (no changes to the main app layout) ... -->
         <div class="header">
-            <h2>🎬 Simple Video Editor</h2>
+            <h2>🎬 Simple Video Editor</h2><p class="tiny-text">Beta</p>
             <button id="help-btn" class="help-button" title="Help">❓</button>
         </div>
 
@@ -39,7 +43,7 @@
             </div>
         </div>
 
-        <div class="actions-container" style="justify-content: flex-start;">
+        <div class="actions-container">
             <button id="add-text-btn" class="action-button add-media">Add Text</button>
             <input type="file" id="image-input" accept="image/*" class="file-input">
             <label for="image-input" class="action-button add-media">Add Image</label>
@@ -76,6 +80,8 @@
             <label for="load-project-input" class="action-button load">Load Project</label>
             <button id="export-video-btn" class="action-button export">Export Video</button>
         </div>
+        
+        <?php include "footer.php"; ?>
     </div>
 
     <!-- Text Input Popup -->
@@ -196,7 +202,10 @@
         </div>
     </div>
 
+
     <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.10.0/dist/ffmpeg.min.js"></script>
     <script src="script.js"></script>
 </body>
+
+
 </html>
